@@ -1,0 +1,29 @@
+#include "arduino_secrets.h"
+
+#define interval 500
+#define ledPin 9
+
+const int ledState = LOW;
+
+unsigned long time = millis();
+unsigned long previous = 0;
+
+void setup() {
+  pinMode (ledPin, OUTPUT);
+  
+}
+
+void loop() {
+time = millis();
+if (time - previous >= interval) {
+previous = time;
+  if (ledState == LOW) {
+    ledState = HIGH;
+  } else {
+ledState = LOW;
+  }
+  digitalWrite(ledPin, ledState);
+}
+  
+}
+
